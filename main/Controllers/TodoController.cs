@@ -55,6 +55,11 @@ namespace Main.Controllers
             return BadRequest("Todo sent is null");
          }
 
+         if (!ModelState.IsValid)
+         {
+            return UnprocessableEntity(ModelState);
+         }
+
          var todo = _mapper.Map<Todo>(todoInput);
 
          var newTodo = await _todoRepository.CreateTodo(todo);
@@ -81,6 +86,11 @@ namespace Main.Controllers
          if (todoDtoFromBody == null)
          {
             return BadRequest();
+         }
+
+         if (!ModelState.IsValid)
+         {
+            return UnprocessableEntity(ModelState);
          }
 
          var todoToUpdate = await _todoRepository.GetTodo(id);

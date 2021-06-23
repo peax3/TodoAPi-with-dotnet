@@ -11,7 +11,7 @@ namespace Entities.Models
    {
       public Guid Id { get; set; }
 
-      [Required(ErrorMessage = "Activity name is a required field")]
+      [Required(ErrorMessage = "Activity is a required field")]
       public string Activity { get; set; }
       public bool IsCompleted { get; set; } = false;
    }
