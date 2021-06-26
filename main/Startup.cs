@@ -32,6 +32,9 @@ namespace main
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
       {
+         services.AddScoped<ITodoRepository, TodoRepository>();
+         services.AddScoped<IAuthenticationManager, AuthenticationManager>();
+
          services.Configure<ApiBehaviorOptions>(options =>
          {
             options.SuppressModelStateInvalidFilter = true;
@@ -39,8 +42,6 @@ namespace main
 
          services.AddControllers();
          services.ConfigureSqliteDb(Configuration);
-
-         services.AddScoped<ITodoRepository, TodoRepository>();
 
          services.AddAutoMapper(typeof(Startup));
 

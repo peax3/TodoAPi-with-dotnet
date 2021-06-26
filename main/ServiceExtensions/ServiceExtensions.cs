@@ -3,9 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace main.ServiceExtensions
 {
@@ -15,6 +13,12 @@ namespace main.ServiceExtensions
       {
          services.AddDbContext<RepositoryContext>(opts => opts.UseSqlite(
             configuration.GetConnectionString("sqliteConnection"), b => b.MigrationsAssembly("Main")));
+      }
+
+      public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+      {
+         var jwtSettings = configuration.GetSection("JwtSettings");
+         var secretKey = Environment.GetEnvironmentVariable("JWTSECRET");
       }
    }
 }

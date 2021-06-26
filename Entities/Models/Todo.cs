@@ -14,5 +14,7 @@ namespace Entities.Models
       [Required(ErrorMessage = "Activity is a required field")]
       public string Activity { get; set; }
       public bool IsCompleted { get; set; } = false;
+
+      public User User { get; set; }
    }
 }

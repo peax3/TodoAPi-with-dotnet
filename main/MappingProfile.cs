@@ -11,6 +11,7 @@ namespace Main
          CreateMap<Todo, TodoDto>();
          CreateMap<TodoForCreationDto, Todo>();
          CreateMap<TodoForUpdateDto, Todo>();
+         CreateMap<UserForRegistrationDto, User>();
       }
    }
 }
